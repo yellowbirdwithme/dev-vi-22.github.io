@@ -13,19 +13,36 @@
   <link rel="stylesheet" href="style.min.css" />
 </head>
 <body>
-  <div id="myZadarmaCallmeWidget14628"></div>
+  <div id="myZadarmaCallmeWidget"></div>
   <script>
-    var myZadarmaCallmeWidget14628;
-    var myZadarmaCallmeWidgetFn14628 = function () {
-      myZadarmaCallmeWidget14628 = new ZadarmaCallmeWidget(
-        "myZadarmaCallmeWidget14628"
+    function getParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param)
+    }
+
+    var myZadarmaCallmeWidget;
+    var widgetInfo = {
+      prod: {
+        widgetId:
+          "u4gg6PJ241Rzsn7erLr6B2G3YMt5vFG4NMBkE55pc6s4d79gpN8H3g9sbm5dsC4Jdbcj2fbSdNJzstv7xczsjrxbAbcgUsCk4ce252af2e8884086d16656084540693",
+        sipId: "947897",
+      },
+      test: {
+        widgetId: "zcrHDvjey3xr59kFDt259NpPj6ey6h3xs3c52p61EaRcSvSBeTuVrpEZfufbdjcnHze6vxj5Uh4cs3M4jBZv3SCJBb7x193n32a0ceb4a1fbf7068cc0a5a21bfda1fb",
+        sipId: "787438"
+      }
+    }
+    widgetInfo = getParam("test") ? widgetInfo.test : widgetInfo.prod;
+
+    var myZadarmaCallmeWidgetFn = function () {
+      myZadarmaCallmeWidget = new ZadarmaCallmeWidget(
+        "myZadarmaCallmeWidget"
       );
-      myZadarmaCallmeWidget14628.create(
+      myZadarmaCallmeWidget.create(
         {
-          widgetId:
-            "u4gg6PJ241Rzsn7erLr6B2G3YMt5vFG4NMBkE55pc6s4d79gpN8H3g9sbm5dsC4Jdbcj2fbSdNJzstv7xczsjrxbAbcgUsCk4ce252af2e8884086d16656084540693",
-          sipId: "947897",
-          domElement: "myZadarmaCallmeWidget14628",
+          widgetId: widgetInfo.widgetId,
+          sipId: widgetInfo.sipId,
+          domElement: "myZadarmaCallmeWidget",
         },
         {
           language: "ru",
@@ -50,11 +67,12 @@
     };
 
     if (window.addEventListener) {
-      window.addEventListener("load", myZadarmaCallmeWidgetFn14628, false);
+      window.addEventListener("load", myZadarmaCallmeWidgetFn, false);
     } else if (window.attachEvent) {
-      window.attachEvent("onload", myZadarmaCallmeWidgetFn14628);
+      window.attachEvent("onload", myZadarmaCallmeWidgetFn);
     }
   </script>
+
   <div id="zadarmaScripts"></div>
   <script>
     (function () {
