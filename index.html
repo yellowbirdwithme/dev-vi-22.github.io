@@ -15,13 +15,14 @@
 </head>
 <body>
   <div id="myZadarmaCallmeWidget"></div>
-  <div id="info">
+  <div id="info" style="visibility: hidden;">
     <img id="avatar" src="https://248305.selcdn.ru/demo_bot_static/solvi-webapp-avatar.png"/>
     <div id="keyword">
       <p><b>Кодовое слово:</b></p>
       <p id="user-keyword"></p>
     </div>
   </div>
+
   <script>
     function getParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
