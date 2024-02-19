@@ -11,9 +11,17 @@
   <script src="jssip.min.js"></script>
   <script src="widget.min.js"></script>
   <link rel="stylesheet" href="style.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="myZadarmaCallmeWidget"></div>
+  <div id="info">
+    <img id="avatar" src="https://248305.selcdn.ru/demo_bot_static/solvi-webapp-avatar.png"/>
+    <div id="keyword">
+      <p><b>Кодовое слово:</b></p>
+      <p id="user-keyword"></p>
+    </div>
+  </div>
   <script>
     function getParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -35,6 +43,14 @@
     widgetInfo = getParam("test") ? widgetInfo.test : widgetInfo.prod;
 
     var myZadarmaCallmeWidgetFn = function () {
+
+      var keyword = getParam("keyword")
+      if (keyword) {
+        var infoDiv = document.getElementById("info")
+        infoDiv.style.visibility = "visible"
+        userKeyword = document.getElementById("user-keyword")
+        userKeyword.innerHTML = keyword
+      }
       myZadarmaCallmeWidget = new ZadarmaCallmeWidget(
         "myZadarmaCallmeWidget"
       );
