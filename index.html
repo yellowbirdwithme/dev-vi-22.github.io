@@ -35,16 +35,23 @@
     var myZadarmaCallmeWidget;
     var widgetInfo = {
       test: {
-        widgetId:
-          "u4gg6PJ241Rzsn7erLr6B2G3YMt5vFG4NMBkE55pc6s4d79gpN8H3g9sbm5dsC4Jdbcj2fbSdNJzstv7xczsjrxbAbcgUsCk4ce252af2e8884086d16656084540693",
+        widgetId: "u4gg6PJ241Rzsn7erLr6B2G3YMt5vFG4NMBkE55pc6s4d79gpN8H3g9sbm5dsC4Jdbcj2fbSdNJzstv7xczsjrxbAbcgUsCk4ce252af2e8884086d16656084540693",
         sipId: "947897",
       },
       prod: {
         widgetId: "zcrHDvjey3xr59kFDt259NpPj6ey6h3xs3c52p61EaRcSvSBeTuVrpEZfufbdjcnHze6vxj5Uh4cs3M4jBZv3SCJBb7x193n32a0ceb4a1fbf7068cc0a5a21bfda1fb",
         sipId: "787438"
+      },
+      yandex: {
+        widgetId: "9uc89shB3fHha5eAtr6Kb96aDxmKDmD2LTznyejM347yTGLcjk4gg2fRSUzXyugB3x1Zu8NGuvs222uf519ec7VhaFdvsnay706f848b3d137d3f815a34b2f2720b44",
+        sipId: "763767"
       }
     }
-    widgetInfo = getParam("test") ? widgetInfo.test : widgetInfo.prod;
+    if (getParam("asr") === "yandex") {
+      widgetInfo = widgetInfo.yandex
+    } else {
+      widgetInfo = getParam("test") ? widgetInfo.test : widgetInfo.prod;
+    }
 
     var myZadarmaCallmeWidgetFn = function () {
       window.Telegram.WebApp.setBackgroundColor("#FFFFFF")
